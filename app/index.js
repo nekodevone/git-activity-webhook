@@ -124,8 +124,8 @@ async function fetchStats(since, until) {
     }
 
     if (
-      new Date(commit.commit.author.date).getTime() > sinceTime ||
-      new Date(commit.commit.author.date).getTime() < untilTime
+      new Date(commit.commit.author.date).getTime() < sinceTime ||
+      new Date(commit.commit.author.date).getTime() > untilTime
     ) {
       continue
     }
@@ -142,8 +142,8 @@ async function fetchStats(since, until) {
     }
 
     if (
-      new Date(pull.created_at).getTime() > sinceTime ||
-      new Date(pull.created_at).getTime() < untilTime
+      new Date(pull.created_at).getTime() < sinceTime ||
+      new Date(pull.created_at).getTime() > untilTime
     ) {
       continue
     }
@@ -178,6 +178,8 @@ async function fetchStats(since, until) {
  */
 function getStartAndEndOfTheWeek() {
   const now = new Date()
+
+  // FIXME: говно код, понедельник некорректно определяется
   const dayOfWeek = now.getDay()
   const diff = now.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1)
   const monday = new Date(now.setDate(diff))
