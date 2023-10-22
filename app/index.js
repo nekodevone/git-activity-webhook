@@ -51,7 +51,7 @@ async function runStatsReport() {
   const [commits, pulls] = await fetchStats(since, until)
   const commitsMap = new Map(commits)
   const pullsMap = new Map(pulls)
-  const authorsList = [...commitsMap.keys(), ...pullsMap.keys()]
+  const authorsList = new Set([...commitsMap.keys(), ...pullsMap.keys()])
   let commitsCount = 0
 
   const embed = {
