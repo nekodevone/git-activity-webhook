@@ -1,0 +1,4 @@
+{
+  "name": "git-activity-webhook",
+  "script": "./app/index.js"
+}
