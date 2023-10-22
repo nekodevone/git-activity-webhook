@@ -190,7 +190,7 @@ function getStartAndEndOfTheWeek() {
   const dayOfWeek = now.getDay()
   const diff = now.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1)
   const monday = new Date(now.setDate(diff))
-  monday.setUTCHours(21, 0, 0, 0) // 00:00:00 по МСК
+  monday.setUTCHours(0, 0, 0, 0) // 03:00:00 по МСК
 
   const sunday = new Date(monday.getTime())
   sunday.setDate(monday.getDate() + 6)
