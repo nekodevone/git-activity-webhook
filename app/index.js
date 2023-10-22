@@ -66,11 +66,18 @@ async function runStatsReport() {
     const pullList = pullsMap.get(author) || []
 
     commitsCount += commitList.length
-    embed.fields.push({
+
+    const field = {
       name: author,
       value: `Коммитов: ${commitList.length}\nПулл-реквестов: ${pullList.length}`,
       inline: false
-    })
+    }
+
+    embed.fields.push(field)
+
+    if (pullList.length > 0) {
+      field.value += `\n${pullList.map((pull) => `- ${pull.title}`).join('\n')}`
+    }
   }
 
   if (commitsCount >= 100) {
